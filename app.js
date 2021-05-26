@@ -1,60 +1,82 @@
-const express = require("express");
-const expressLayouts = require("express-ejs-layouts");
-const mongoose = require("mongoose");
-const passport = require("passport");
-const flash = require("connect-flash");
-const session = require("express-session");
+let express = require("express");
+let path = require("path");
+let cookieParser = require("cookie-parser");
+let bodyParser = require("body-parser");
+let exphbs = require("express-handlebars");
+let expressValidator = require("express-validator");
+let flash = require("connect-flash");
+let session = require("express-session");
+let passport = require("passport");
+let LocalStrategy = require("passport-local").Strategy;
+let mongo = require("mongodb");
+let mongoose = require("mongoose");
 
-//init app
-const app = express();
+mongoose.connect("mongodb://localhost/loginapp");
+let db = mongoose.connection;
 
-// Passport Config
-require("./config/passport")(passport);
+let routes = require("./routes/index");
+let users = require("./routes/users");
 
-// DB Config
-const db = require("./config/keys").mongoURI;
+// Init App
+let app = express();
 
-// Connect to MongoDB
-mongoose
-  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.log(err));
+// View Engine
+app.set("views", path.join(__dirname, "views"));
+app.engine("handlebars", exphbs({ defaultLayout: "layout" }));
+app.set("view engine", "handlebars");
 
-// EJS
-app.use(expressLayouts);
-app.set("view engine", "ejs");
+// BodyParser Middleware
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: false,
+  })
+);
+app.use(cookieParser());
 
-// Express body parser
-app.use(express.urlencoded({ extended: true }));
+// Set Static Folder
+app.use(express.static(path.join(__dirname, "public")));
 
-// Express session
+// Express Session
 app.use(
   session({
     secret: "secret",
-    resave: true,
     saveUninitialized: true,
+    resave: true,
   })
 );
 
-// Passport middleware
+// Passport init
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Connect flash
+// Express Validator
+app.use(express.json());
+app.post("/user", (req, res) => {
+  User.create({
+    username: req.body.username,
+    password: req.body.password,
+  }).then((user) => res.json(user));
+});
+
+// Connect Flash
 app.use(flash());
 
-// Global variables
+// Global lets
 app.use(function (req, res, next) {
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash("error");
+  res.locals.user = req.user || null;
   next();
 });
 
-// Routes
-app.use("/", require("./routes/index.js"));
-app.use("/users", require("./routes/users.js"));
+app.use("/", routes);
+app.use("/users", users);
 
-const PORT = process.env.PORT || 5000;
+// Set Port
+app.set("port", process.env.PORT || 3000);
 
-app.listen(PORT, console.log(`Server running on  ${PORT}`));
+app.listen(app.get("port"), function () {
+  console.log("Server started on port " + app.get("port"));
+});
