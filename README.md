@@ -22,10 +22,10 @@
 <br />
 <div align="center">
   <a href="https://github.com/NatC02/loginRegistrationNode">
-    <img src="images/nodeLogo.svg" alt="Logo" width="300" height="100">
-    <img src="images/handlebarsLogo.svg" alt="Logo" width="300" height="100">
-    <img src="images/mongodbLogo.svg" alt="Logo" width="300" height="100">
-    <img src="images/passportLogo.svg" alt="Logo" width="300" height="100">
+    <img src="https://raw.githubusercontent.com/NatC02/loginRegistrationNode/55d645d72278d95cb5f43ea63ede914bcc832686/Desktop/ImportantDev/MERN/source/images/nodeLogo.svg" alt="Logo" width="300" height="100">
+    <img src="https://raw.githubusercontent.com/NatC02/loginRegistrationNode/55d645d72278d95cb5f43ea63ede914bcc832686/Desktop/ImportantDev/MERN/source/images/handlebarsLogo.svg" alt="Logo" width="300" height="100">
+    <img src="https://raw.githubusercontent.com/NatC02/loginRegistrationNode/55d645d72278d95cb5f43ea63ede914bcc832686/Desktop/ImportantDev/MERN/source/images/mongodbLogo.svg" alt="Logo" width="300" height="100">
+    <img src="https://raw.githubusercontent.com/NatC02/loginRegistrationNode/55d645d72278d95cb5f43ea63ede914bcc832686/Desktop/ImportantDev/MERN/source/images/passportLogo.svg" alt="Logo" width="300" height="100">
   </a>
 
   <h3 align="center">Localhost login and registration</h3>
