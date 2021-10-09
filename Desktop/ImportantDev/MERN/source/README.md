@@ -60,7 +60,7 @@
 
 ## About The Project
 
-[![Registration and Login][project-screenshot]](https://github.com/NatC02/loginRegistrationNode)
+[![Registration and Login][project-screenshot]](https://raw.githubusercontent.com/NatC02/loginRegistrationNode/final/Desktop/ImportantDev/MERN/source/images/screenshot.png)
 
 I wanted to know how login authentication works with a backend.
 
@@ -76,9 +76,9 @@ I wanted to know how login authentication works with a backend.
 
 ## Usage
 
-![project-demo-postman](/demo/demoPostman.gif)
+![project-demo-postman](https://raw.githubusercontent.com/NatC02/loginRegistrationNode/final/Desktop/ImportantDev/MERN/source/demo/demoPostman.gif)
 
-![project-demo](/demo/demo.gif)
+![project-demo](https://raw.githubusercontent.com/NatC02/loginRegistrationNode/final/Desktop/ImportantDev/MERN/source/demo/demo.gif)
 
 ### Built with
 
@@ -138,4 +138,4 @@ List of resources I found helpful and want to give credit to. I was looking to l
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[project-screenshot]: /images/screenshot.png
+[project-screenshot]: https://raw.githubusercontent.com/NatC02/loginRegistrationNode/final/Desktop/ImportantDev/MERN/source/images/screenshot.png
